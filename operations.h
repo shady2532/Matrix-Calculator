@@ -1,3 +1,4 @@
+#pragma once
 #include<iostream>
 #include<cmath>
 #include<vector>
@@ -8,7 +9,7 @@ using namespace std;
 	that method was the recursion method which got time limited for matrices bigger than 8x8
 	so I started thinking of one more way to solve it using the matrices with less recursion or with no recursion at all :)
 */
-long long detdetdet(vector<vector<double>>& s, int n)
+long long determinant(vector<vector<double>>& s, int n)
 {
 	double det = 1;
 	for (int i = 0; i < n - 1; i++)

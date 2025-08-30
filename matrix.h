@@ -1,19 +1,84 @@
+#pragma once
 #include <iostream>
 #include <vector>
 #include <cmath>
 using namespace std;
 
-void resizeMatrix(vector<vector<long long>> &matrix, long long rows, long long cols)
+template <typename T>
+class Matrix
 {
-    /*matrix.resize(rows);
-    for (auto &row : matrix)
-        row.resize(cols);*/
-    matrix = vector<vector<long long>>(rows, vector<long long>(cols, 0));
-}
+    vector<vector<T>> data;
+    int rows, cols;
 
-void fillMatrix(vector<vector<long long>> &matrix)
-{
-    for (auto &row : matrix)
-        for (auto &elem : row)
-            cin >> elem;
-}
+public:
+    Matrix(int rows, int cols) : rows(rows), cols(cols), data(rows, vector<T>(cols)) {}
+
+    Matrix() : rows(0), cols(0) {}
+
+    T &operator()(int i, int j)
+    {
+        if (i < 0 || i >= rows || j < 0 || j >= cols)
+            throw out_of_range("Matrix index out of bounds");
+        return data[i][j];
+    }
+
+    const T &operator()(int i, int j) const
+    {
+        if (i < 0 || i >= rows || j < 0 || j >= cols)
+            throw out_of_range("Matrix index out of bounds");
+        return data[i][j];
+    }
+
+    int getRows() const { return rows; }
+
+    int getCols() const { return cols; }
+
+    void resize(int new_rows, int new_cols, T default_value = T())
+    {
+        rows = new_rows;
+        cols = new_cols;
+        data = vector<vector<T>>(new_rows, vector<T>(new_cols, default_value));
+    }
+
+    void fill()
+    {
+        for (auto &row : data)
+            for (auto &elem : row)
+                cin >> elem;
+    }
+
+    void print() const
+    {
+        for (const auto &row : data)
+        {
+            for (const auto &elem : row)
+                cout << elem << " ";
+            cout << endl;
+        }
+    }
+};
+
+// void resizeMatrix(vector<vector<long long>> &matrix, long long rows, long long cols)
+// {
+//     /*matrix.resize(rows);
+//     for (auto &row : matrix)
+//         row.resize(cols);*/
+//     matrix = vector<vector<long long>>(rows, vector<long long>(cols, 0));
+// }
+
+// void fillMatrix(vector<vector<long long>> &matrix)
+// {
+//     for (auto &row : matrix)
+//         for (auto &elem : row)
+//             cin >> elem;
+// }
+
+// void printMatrix(const vector<vector<long long>> &matrix)
+// {
+//     for (const auto &row : matrix)
+//     {
+//         for (const auto &elem : row)
+//             cout << elem << " ";
+//         cout << endl;
+//     }
+// }

@@ -5,62 +5,63 @@
 #include "matrix.h"
 using namespace std;
 
-// matrices are used as vectors not arrays
-vector<vector<long long>> matrixA; // matrix A
-vector<vector<double>> matdouble1; // matrix A in a form of double
-vector<vector<long long>> matrixB; // matrix B
-vector<vector<double>> matdouble2; // matrix B in a form of double
-
-vector<vector<long long>> sumMatrix; // this was for storing the sum
-
-vector<vector<long long>> subMatrix; // this one for the subtraction
-
-vector<vector<long long>> multiplicationMatrix; // this for the mutilplication of (A & B)
-
-vector<vector<long long>> mat_m2lob;   // wad7a lw7dha aho
-vector<vector<double>> inversemat;	   // wad7a aktr mn elly 2blha
-vector<vector<double>> divisionMatrix; // this for the multiplication of (A & inverse of B)
-
-// for assigning values in a matrix I used 2D vectors
-// first pushing back values in a 1D vector
-// then pushing back the 1D vector in a 2D vector
-
-// some variables that I don't know how it got so many like this
-long long operation;		// variable to choose operation
-long long sum = 0;			// sumition
-long long sub = 0;			// subtraction
-long long productSum = 0;	// multiplication for (A & B)
-long long determinant1 = 0; // determinant of matrix 1
-long long determinant2 = 0; // determinant of matrix 2
-long long r1, c1, r2, c2;	// rows and columns for our 2 matrices
-long long sign;				// this one is for the sign of the inverse matrix B
-double productSum2 = 0;		// multiplication for (A & inverse of B)
-
-// those honestly I named them with nothing in mind
-// I even forgot what they are for xD
-// but i know one thing tho...
-double value;	  // this is double
-long long valuee; // this is long long
-double asd;		  // this is asd
-long long lol;	  // this is lol
-// kidding i just used them to push back the values in the matrices as it was the only way to add elements to them
-// i just got lost when i was naming them
-
 int main()
 {
+
+	// matrices are used as vectors not arrays
+	Matrix<long long> matrixA; // matrix A
+	Matrix<double> matdouble1; // matrix A in a form of double
+	Matrix<long long> matrixB; // matrix B
+	Matrix<double> matdouble2; // matrix B in a form of double
+
+	Matrix<long long> sumMatrix; // this was for storing the sum
+
+	Matrix<long long> subMatrix; // this one for the subtraction
+
+	Matrix<long long> multiplicationMatrix; // this for the mutilplication of (A & B)
+
+	Matrix<long long> mat_m2lob;   // wad7a lw7dha aho
+	Matrix<double> inversemat;	   // wad7a aktr mn elly 2blha
+	Matrix<double> divisionMatrix; // this for the multiplication of (A & inverse of B)
+
+	// for assigning values in a matrix I used 2D vectors
+	// first pushing back values in a 1D vector
+	// then pushing back the 1D vector in a 2D vector
+
+	// some variables that I don't know how it got so many like this
+	long long operation;		// variable to choose operation
+	long long sum = 0;			// sumition
+	long long sub = 0;			// subtraction
+	long long productSum = 0;	// multiplication for (A & B)
+	long long determinant1 = 0; // determinant of matrix 1
+	long long determinant2 = 0; // determinant of matrix 2
+	long long r1, c1, r2, c2;	// rows and columns for our 2 matrices
+	long long sign;				// this one is for the sign of the inverse matrix B
+	double productSum2 = 0;		// multiplication for (A & inverse of B)
+
+	// those honestly I named them with nothing in mind
+	// I even forgot what they are for xD
+	// but i know one thing tho...
+	double value;	  // this is double
+	long long valuee; // this is long long
+	double asd;		  // this is asd
+	long long lol;	  // this is lol
+	// kidding i just used them to push back the values in the matrices as it was the only way to add elements to them
+	// i just got lost when i was naming them
+
 	cout << "Please enter dimensions of Matrix A:" << endl;
 	cin >> r1 >> c1;
 	cout << "Please enter dimensions of Matrix B:" << endl;
 	cin >> r2 >> c2;
 	cout << "Please enter values of Matrix A:" << endl;
 	// entering values of matrix A
-	resizeMatrix(matrixA, r1, c1);
-	fillMatrix(matrixA);
+	matrixA.resize(r1, c1);
+	matrixA.fill();
 
 	cout << "Please enter values of Matrix B:" << endl;
 	// entering values of matrix B
-	resizeMatrix(matrixB, r2, c2);
-	fillMatrix(matrixB);
+	matrixB.resize(r2, c2);
+	matrixB.fill();
 
 	long long *product = new long long[c1];
 	double *product2 = new double[c1];
@@ -122,14 +123,7 @@ int main()
 						sumMatrix.push_back(ff); // this loop is for pushing a 1D vector into a 2D vector
 					}
 					// cout result of sum
-					for (long long i = 0; i < r1; i++)
-					{
-						for (long long j = 0; j < c1; j++)
-						{
-							cout << sumMatrix[i][j] << " "; // nothing to explain just a space and a new line
-						}
-						cout << endl;
-					}
+					printMatrix(sumMatrix);
 				}
 				// subtract
 				if (operation == 2)
@@ -146,14 +140,7 @@ int main()
 						subMatrix.push_back(ff); // this loop is for pushing a 1D vector into a 2D vector
 					}
 					// cout result of subtract
-					for (long long i = 0; i < r1; i++)
-					{
-						for (long long j = 0; j < c1; j++)
-						{
-							cout << subMatrix[i][j] << " "; // nothing to explain just a space and a new line
-						}
-						cout << endl;
-					}
+					printMatrix(subMatrix);
 				}
 			}
 		}
@@ -181,14 +168,7 @@ int main()
 					multiplicationMatrix.push_back(ff);
 				}
 				// cout result of multiplication
-				for (long long i = 0; i < r1; i++)
-				{
-					for (long long j = 0; j < c2; j++)
-					{
-						cout << multiplicationMatrix[i][j] << " "; // nothing to explain just a space and a new line
-					}
-					cout << endl;
-				}
+				printMatrix(multiplicationMatrix);
 			}
 		}
 		// DETERMINANTS
@@ -200,7 +180,7 @@ int main()
 			}
 			else
 			{
-				cout << detdetdet(matdouble1, r1) << endl; // getting the result of a determinant and a new line
+				cout << determinant(matdouble1, r1) << endl; // getting the result of a determinant and a new line
 			}
 		}
 		if (operation == 6)
@@ -211,14 +191,14 @@ int main()
 			}
 			else
 			{
-				cout << detdetdet(matdouble2, r2) << endl; // getting the result of a determinant and a new line
+				cout << determinant(matdouble2, r2) << endl; // getting the result of a determinant and a new line
 			}
 		}
 		// INVEEEEEERSE
 		if (operation == 4)
 		{
 			// it's a must that matrix B is a square matrix to get inverse of B and for multiplication no.columns of A equals no.rows of B
-			if (c1 != r2 or r2 != c2 or detdetdet(matdouble2, r2) == 0)
+			if (c1 != r2 or r2 != c2 or determinant(matdouble2, r2) == 0)
 				cout << "The operation you chose is invalid for the given matrices." << endl;
 			else
 			{
@@ -228,8 +208,8 @@ int main()
 					for (int i = 0; i < r1; i++)
 					{
 						for (int j = 0; j < c1; j++)
-						{															  // here we divide matrix A by determinant of B
-							cout << matrixA[i][j] / detdetdet(matdouble2, r2) << " "; // nothing to explain just a space and a new line
+						{																// here we divide matrix A by determinant of B
+							cout << matrixA[i][j] / determinant(matdouble2, r2) << " "; // nothing to explain just a space and a new line
 						}
 						cout << endl;
 					}
@@ -255,7 +235,7 @@ int main()
 							}
 							mat_m2lob.push_back(ff); // this loop is for pushing a 1D vector into a 2D vector
 						}
-						double inversedet = (double)1 / detdetdet(matdouble2, r2); // here is a double called inversedet which gets 1/determinant of B
+						double inversedet = (double)1 / determinant(matdouble2, r2); // here is a double called inversedet which gets 1/determinant of B
 						for (long long i = 0; i < r2; i++)
 						{
 							vector<double> ff;
@@ -303,8 +283,8 @@ int main()
 									}
 									zz.push_back(ff); // this loop is for pushing a 1D vector into a 2D vector
 								}
-								lol = detdetdet(zz, r2 - 1); // we get the determinant of submatrix
-								y.push_back(lol);			 // and push it back in a 1D vector of a new matrix
+								lol = determinant(zz, r2 - 1); // we get the determinant of submatrix
+								y.push_back(lol);			   // and push it back in a 1D vector of a new matrix
 							}
 							adj_B.push_back(y); // pushing back the 1D vector into a 2D vector
 						}
@@ -323,7 +303,7 @@ int main()
 							}
 							mat_m2lob.push_back(ff); // this loop is for pushing a 1D vector into a 2D vector
 						}
-						double inversedet = (double)1 / detdetdet(matdouble2, r2); // here is a double called inversedet which gets 1/determinant of B
+						double inversedet = (double)1 / determinant(matdouble2, r2); // here is a double called inversedet which gets 1/determinant of B
 						// inverse of B=1/determinant * adjoint
 						for (long long i = 0; i < r2; i++)
 						{
