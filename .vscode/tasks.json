@@ -1,0 +1,30 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "build",
+      "type": "shell",
+      "command": "g++",
+      "args": [
+        "-g",
+        "Matrix-Calculator.cpp",  // Directly compile your main file
+        "-I.",                    // Include current directory
+        "-o",
+        "build/Matrix-Calculator.exe",
+        "-Wall",                  // Correct warning flags
+        "-Wextra"
+      ],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": ["$gcc"],
+      "options": {
+        "shell": {
+          "executable": "cmd.exe",
+          "args": ["/d", "/c"]
+        }
+      }
+    }
+  ]
+}

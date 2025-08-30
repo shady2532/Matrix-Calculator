@@ -1,19 +1,24 @@
 #include<iostream>
 #include<cmath>
 #include<vector>
+#include"operations.h"
 using namespace std;
 
 //matrices are used as vectors not arrays
-vector<vector<long long>> mattt1; //matrix A
+vector<vector<long long>> matrixA; //matrix A
 vector<vector<double>> matdouble1; //matrix A in a form of double
-vector<vector<long long>> mattt2; //matrix B
+vector<vector<long long>> matrixB; //matrix B
 vector<vector<double>> matdouble2; //matrix B in a form of double
-vector<vector<long long>> matttres1; //this was for storing the sum
-vector<vector<long long>> matttres2; //this one for the subtraction
-vector<vector<long long>> matttres3; //this for the mutilplication of (A & B)
+
+vector<vector<long long>> sumMatrix; //this was for storing the sum
+
+vector<vector<long long>> subMatrix; //this one for the subtraction
+
+vector<vector<long long>> multiplicationMatrix; //this for the mutilplication of (A & B)
+
 vector<vector<long long>>mat_m2lob; //wad7a lw7dha aho
 vector<vector<double>>inversemat; //wad7a aktr mn elly 2blha
-vector<vector<double>> matttres4; //this for the multiplication of (A & inverse of B)
+vector<vector<double>> divisionMatrix; //this for the multiplication of (A & inverse of B)
 
 //for assigning values in a matrix I used 2D vectors
 //first pushing back values in a 1D vector 
@@ -42,54 +47,7 @@ long long lol;//this is lol
 
 
 
-//	determinant using gaussian elemenation rule	
-/*
-	tried to use the common method of calculating determinants but didn't work as I used vectors,
-	that method was the recursion method which got time limited for matrices bigger than 8x8
-	so I started thinking of one more way to solve it using the matrices with less recursion or with no recursion at all :)
-*/
-long long detdetdet(vector<vector<double>> s, int n)
-{
-	double det = 1;
-	for (int i = 0; i < n - 1; i++)
-	{
-		double sba7oo;
-		int index = i;						  //abs(-2) = 2
-		double mxvalueee = abs(s[i][i]);  //we assign mxvalueee with the first value of the matrix till it finds bigger one
-		for (int j = i + 1; j < n; j++)		 //then we start comparing it with other values of the same column
-		{
-			sba7oo = abs(s[j][i]);		 //values of elements of same column named sba7oo
-			if (sba7oo > mxvalueee)			 //then we compare which is bigger
-			{								 //if our mxvalueee is bigger than sba7oo we continue 
-				mxvalueee = sba7oo;			 //else we assign the value of sba7oo to mxvalueee
-				index = j;					 //as well as the index of the the biggest number 
-			}
-		}
-		if (index != i)						//here if we notice a change in the first row and index 
-		{
-			for (int g = 0; g < n; g++)
-			{
-				swap(s[i][g], s[index][g]); //we start swapping the elements of the rows
-			}								//then we take a -1 as a common factor of our determinant 
-			det = -det;						//(rules for solving the determinant using gaussian elemination)
-		}
-		double elly_hytderb = s[i][i];		//first s[i][i] we took abs of it here we won't, coz we were just comparing values not signs
-		if (abs(elly_hytderb) <= 0) return 0.0; // if we found that s[i][i] equals zero we return a zero
-		for (int j = i + 1; j < n; j++)
-		{	//now next one is kinda tricky. we get another variable (m4_3aref) and get the division of s[j][i]/s[i][i]
-			double m4_3aref = s[j][i] / elly_hytderb;
-			for (int x = i; x < n; x++)
-			{	//then we multiply it with the elements of the (i)th row then subtract it from the (j)th row
-				s[j][x] -= m4_3aref * s[i][x];
-			}
-		}	//we reply then step till we get zeros in the first column except for the in the first row
-		det *= elly_hytderb;	//then we take s[i][i] and multiply it to our value stored in det
-	}
-	det *= s[n - 1][n - 1];		// this one for the last element as we won't do the operation above on it 
-	if (det == -0)	//some glitches :"(
-		det = 0;
-	return (long long)round(det); //returning the value of det after rounding it and casting it into (long long)
-}
+
 
 int main()
 {
@@ -107,7 +65,7 @@ int main()
 			cin >> value;
 			ff.push_back(value);		//this loop is for pushing elements in a 1D vector
 		}
-		mattt1.push_back(ff);			//this loop is for pushing a 1D vector into a 2D vector
+		matrixA.push_back(ff);			//this loop is for pushing a 1D vector into a 2D vector
 	}
 	cout << "Please enter values of Matrix B:" << endl;
 	//entering values of matrix 2
@@ -119,7 +77,7 @@ int main()
 			cin >> value;
 			ff.push_back(value);		//this loop is for pushing elements in a 1D vector
 		}
-		mattt2.push_back(ff);			//this loop is for pushing a 1D vector into a 2D vector
+		matrixB.push_back(ff);			//this loop is for pushing a 1D vector into a 2D vector
 	}
 	long long* product = new long long[c1];
 	double* product2 = new double[c1];
@@ -130,7 +88,7 @@ int main()
 		vector<double>ff;
 		for (int j = 0; j < c1; j++)
 		{
-			value = mattt1[i][j];
+			value = matrixA[i][j];
 			ff.push_back(value);		//this loop is for pushing elements in a 1D vector
 		}
 		matdouble1.push_back(ff);		//this loop is for pushing a 1D vector into a 2D vector
@@ -141,7 +99,7 @@ int main()
 		vector<double>ff;
 		for (int j = 0; j < c2; j++)
 		{
-			value = mattt2[i][j];
+			value = matrixB[i][j];
 			ff.push_back(value);		//this loop is for pushing elements in a 1D vector
 		}
 		matdouble2.push_back(ff);		//this loop is for pushing a 1D vector into a 2D vector
@@ -175,17 +133,17 @@ int main()
 						vector<long long > ff;
 						for (long long j = 0; j < c1; j++)
 						{
-							sum = mattt1[i][j] + mattt2[i][j];
+							sum = matrixA[i][j] + matrixB[i][j];
 							ff.push_back(sum);		//this loop is for pushing elements in a 1D vector
 						}
-						matttres1.push_back(ff);	//this loop is for pushing a 1D vector into a 2D vector
+						sumMatrix.push_back(ff);	//this loop is for pushing a 1D vector into a 2D vector
 					}
 					//cout result of sum
 					for (long long i = 0; i < r1; i++)
 					{
 						for (long long j = 0; j < c1; j++)
 						{
-							cout << matttres1[i][j] << " "; //nothing to explain just a space and a new line
+							cout << sumMatrix[i][j] << " "; //nothing to explain just a space and a new line
 						}
 						cout << endl;
 					}
@@ -199,17 +157,17 @@ int main()
 						vector<long long > ff;
 						for (long long j = 0; j < c1; j++)
 						{
-							sub = mattt1[i][j] - mattt2[i][j];
+							sub = matrixA[i][j] - matrixB[i][j];
 							ff.push_back(sub);		//this loop is for pushing elements in a 1D vector
 						}
-						matttres2.push_back(ff);	//this loop is for pushing a 1D vector into a 2D vector
+						subMatrix.push_back(ff);	//this loop is for pushing a 1D vector into a 2D vector
 					}
 					//cout result of subtract
 					for (long long i = 0; i < r1; i++)
 					{
 						for (long long j = 0; j < c1; j++)
 						{
-							cout << matttres2[i][j] << " ";	//nothing to explain just a space and a new line
+							cout << subMatrix[i][j] << " ";	//nothing to explain just a space and a new line
 						}
 						cout << endl;
 					}
@@ -231,20 +189,20 @@ int main()
 					{
 						for (long long k = 0; k < c1; k++)
 						{	 // after some experiements found that...
-							product[k] = mattt1[i][k] * mattt2[k][j];	//we multiply elements of a row in A with column in B
+							product[k] = matrixA[i][k] * matrixB[k][j];	//we multiply elements of a row in A with column in B
 							productSum += product[k];	//then adding them
 						}
 						ff.push_back(productSum);
 						productSum = 0;			//resetting productSum to zero to calculate for the next iterate
 					}
-					matttres3.push_back(ff);
+					multiplicationMatrix.push_back(ff);
 				}
 				//cout result of multiplication
 				for (long long i = 0; i < r1; i++)
 				{
 					for (long long j = 0; j < c2; j++)
 					{
-						cout << matttres3[i][j] << " ";	//nothing to explain just a space and a new line
+						cout << multiplicationMatrix[i][j] << " ";	//nothing to explain just a space and a new line
 					}
 					cout << endl;
 				}
@@ -288,7 +246,7 @@ int main()
 					{
 						for (int j = 0; j < c1; j++)
 						{	// here we divide matrix A by determinant of B
-							cout << mattt1[i][j] / detdetdet(matdouble2, r2) << " ";	//nothing to explain just a space and a new line
+							cout << matrixA[i][j] / detdetdet(matdouble2, r2) << " ";	//nothing to explain just a space and a new line
 						}
 						cout << endl;
 					}
@@ -298,7 +256,7 @@ int main()
 					//division matrix 2x2
 					if (r2 == 2)
 					{
-						swap(mattt2[0][0], mattt2[1][1]);	//here we swap s[0][0] with s[1][1] (special case)		// 1 2      4 -2
+						swap(matrixB[0][0], matrixB[1][1]);	//here we swap s[0][0] with s[1][1] (special case)		// 1 2      4 -2
 						for (int i = 0; i < r2; i++)																// 3 4      -3 1 
 						{
 							vector<long long >ff;
@@ -306,9 +264,9 @@ int main()
 							{
 								sign = i + j;				//sign variable
 								if (sign % 2 == 0)			//then we check the signs of the matrix to get the adjoint
-									value = mattt2[i][j];
+									value = matrixB[i][j];
 								else
-									value = -mattt2[i][j];
+									value = -matrixB[i][j];
 								ff.push_back(value);	//this loop is for pushing elements in a 1D vector
 							}
 							mat_m2lob.push_back(ff);	//this loop is for pushing a 1D vector into a 2D vector
@@ -345,7 +303,7 @@ int main()
 									{
 										if (subj == j)	//this checks if we are on the same column as the main matrix or not
 											continue;	//if yes continue
-										valuee = mattt2[subi][subj];
+										valuee = matrixB[subi][subj];
 										ff.push_back(valuee);	//this loop is for pushing elements in a 1D vector of the new submatrix
 									}
 									z.push_back(ff);	//this loop is for pushing a 1D vector into a 2D vector of the new submatrix
@@ -412,20 +370,20 @@ int main()
 						{
 							for (long long k = 0; k < c1; k++)
 							{	// after some experiements found that...
-								product2[k] = mattt1[i][k] * inversemat[k][j];	//we multiply elements of a row in A with column in B
+								product2[k] = matrixA[i][k] * inversemat[k][j];	//we multiply elements of a row in A with column in B
 								productSum2 += product2[k];		//then adding them
 							}
 							ff.push_back(round(productSum2));	//this loop is for pushing elements in a 1D vector
 							productSum2 = 0;					//resetting productSum to zero to calculate for the next iterate
 						}
-						matttres4.push_back(ff);				//this loop is for pushing a 1D vector into a 2D vector
+						divisionMatrix.push_back(ff);				//this loop is for pushing a 1D vector into a 2D vector
 					}
 					//cout result of multiplication
 					for (long long i = 0; i < r1; i++)
 					{
 						for (long long j = 0; j < c2; j++)
 						{
-							cout << (long long)matttres4[i][j] << " ";	//nothing to explain just a space and a new line
+							cout << (long long)divisionMatrix[i][j] << " ";	//nothing to explain just a space and a new line
 						}
 						cout << endl;
 					}
