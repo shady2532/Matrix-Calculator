@@ -1,14 +1,14 @@
 #include <iostream>
 #include <cmath>
 #include <vector>
-#include "operations.h"
-#include "matrix.h"
+#include "operations.cpp"
+#include "matrix.cpp"
 using namespace std;
 
 int main()
 {
 
-	// matrices are used as vectors not arrays
+	// matrices are classes
 	Matrix<long long> matrixA; // matrix A
 	Matrix<double> matdouble1; // matrix A in a form of double
 	Matrix<long long> matrixB; // matrix B
@@ -29,7 +29,7 @@ int main()
 	// then pushing back the 1D vector in a 2D vector
 
 	// some variables that I don't know how it got so many like this
-	long long operation;		// variable to choose operation
+	long long choice;			// variable to choose operation
 	long long sum = 0;			// sumition
 	long long sub = 0;			// subtraction
 	long long productSum = 0;	// multiplication for (A & B)
@@ -89,18 +89,20 @@ int main()
 		matdouble2.push_back(ff); // this loop is for pushing a 1D vector into a 2D vector
 	}
 
+
 	while (true)
 	{
 		cout << "Please choose operation type(1: A+B, 2: A-B, 3: AxB, 4: A*inverse(B), 5: |A|, 6: |B|, 7: quit):" << endl;
-		cin >> operation;
+		cin >> choice;
+		
 		// program break
-		if (operation == 7)
+		if (choice == 7)
 		{
 			cout << "Thank You!" << endl; // nothing to explain here lol
 			break;
 		}
 		// sum and subtract
-		if (operation == 1 || operation == 2)
+		if (choice == 1 || choice == 2)
 		{
 			if (r1 != r2 or c1 != c2) // it's a must that both matrices have same rows & columns for addition and subtraction
 			{
@@ -109,7 +111,7 @@ int main()
 			else
 			{
 				// sum
-				if (operation == 1)
+				if (choice == 1)
 				{
 					// sum operation
 					for (long long i = 0; i < r1; i++)
@@ -126,7 +128,7 @@ int main()
 					printMatrix(sumMatrix);
 				}
 				// subtract
-				if (operation == 2)
+				if (choice == 2)
 				{
 					// subtract operation
 					for (long long i = 0; i < r1; i++)
@@ -145,7 +147,7 @@ int main()
 			}
 		}
 		// multiplication
-		if (operation == 3)
+		if (choice == 3)
 		{
 			if (c1 != r2) // it's a must for the multiplication to be done that no.columns for A equals no.rows for B
 				cout << "The operation you chose is invalid for the given matrices." << endl;
@@ -172,7 +174,7 @@ int main()
 			}
 		}
 		// DETERMINANTS
-		if (operation == 5)
+		if (choice == 5)
 		{
 			if (r1 != c1) // it's a must that a matrix must be a square matrix to get it's determinant which means the rows equals the columns
 			{
@@ -183,7 +185,7 @@ int main()
 				cout << determinant(matdouble1, r1) << endl; // getting the result of a determinant and a new line
 			}
 		}
-		if (operation == 6)
+		if (choice == 6)
 		{
 			if (r2 != c2) // it's a must that a matrix must be a square matrix to get it's determinant which means the rows equals the columns
 			{
@@ -195,7 +197,7 @@ int main()
 			}
 		}
 		// INVEEEEEERSE
-		if (operation == 4)
+		if (choice == 4)
 		{
 			// it's a must that matrix B is a square matrix to get inverse of B and for multiplication no.columns of A equals no.rows of B
 			if (c1 != r2 or r2 != c2 or determinant(matdouble2, r2) == 0)
