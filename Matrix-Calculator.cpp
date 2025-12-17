@@ -1,8 +1,8 @@
 #include <iostream>
 #include <cmath>
 #include <vector>
-#include "operations.cpp"
-#include "matrix.cpp"
+#include "operations.h"
+#include "matrix.h"
 using namespace std;
 
 int main()

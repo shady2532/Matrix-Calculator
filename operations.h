@@ -2,7 +2,7 @@
 #include <iostream>
 #include <cmath>
 #include <vector>
-#include <matrix.cpp>
+#include "matrix.h"
 using namespace std;
 
 template <typename T>
@@ -14,32 +14,47 @@ public:
 };
 
 template <typename T>
-class commandAdd : command<T>
+class commandAdd : public command<T>
 {
 	Matrix<T> A;
 	Matrix<T> B;
 	Matrix<T> result;
 
 public:
-	void addCommand(Matrix<T> &a, Matrix<T> &b, Matrix<T> &res) : A(a), B(b), result(res) {}
+	commandAdd(Matrix<T> &a, Matrix<T> &b, Matrix<T> &res) : A(a), B(b), result(res) {}
+
+	void execute() override
+		result = A + B;
+};
+
+template <typename T>
+class commandSubtract : public command<T>
+{
+	Matrix<T> A;
+	Matrix<T> B;
+	Matrix<T> result;
+
+public:
+	void subtractCommand(Matrix<T> &a, Matrix<T> &b, Matrix<T> &res) : A(a), B(b), result(res) {}
 
 	void execute() override
 	{
-		result = A + B;
+		result = A - B;
 	}
 };
 
 template <typename T>
-class commandSubtract : command<T>
+class determinant : public command<T>
 {
 	Matrix<T> A;
-	Matrix<T> B;
 	Matrix<T> result;
 
 public:
+	void determinantCommand(Matrix<T> &a, Matrix<T> &res) : A(a), result(res) {}
+
 	void execute() override
 	{
-		// Implementation for subtraction
+		result = A.determinant();
 	}
 };
 

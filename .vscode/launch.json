@@ -7,7 +7,7 @@
       "request": "launch",
       "args": [],
       "stopAtEntry": false,
-      "externalConsole": true,
+      "externalConsole": false,
       "cwd": "${workspaceFolder}",
       "environment": [],
       "program": "${workspaceFolder}/build/Matrix-Calculator.exe", // ← Match this

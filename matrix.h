@@ -8,32 +8,47 @@ template <typename T>
 class Matrix
 {
     vector<vector<T>> data;
-    int rows, cols;
+    size_t rows, cols;
 
 public:
-    Matrix(int rows, int cols) : rows(rows), cols(cols), data(rows, vector<T>(cols)) {}
-
+    // Default constructor
     Matrix() : rows(0), cols(0) {}
 
-    T &operator()(int i, int j)
+    // Parameterized constructor
+    Matrix(size_t r, size_t c) : rows(r), cols(c), data(r, vector<T>(c)) {}
+
+    // Destructor
+    ~Matrix() noexcept = default;
+
+    // Copy constructor
+    Matrix(const Matrix &other) : rows(other.rows), cols(other.cols), data(other.data) {}
+
+    // Move constructor
+    Matrix(Matrix &&other) noexcept : rows(other.rows), cols(other.cols), data(std::move(other.data))
     {
-        if (i < 0 || i >= rows || j < 0 || j >= cols)
+        other.rows = 0;
+        other.cols = 0;
+    }
+
+    T &operator()(size_t i, size_t j)
+    {
+        if (i >= rows || j >= cols)
             throw out_of_range("Matrix index out of bounds");
         return data[i][j];
     }
 
-    const T &operator()(int i, int j) const
+    const T &operator()(size_t i, size_t j) const
     {
-        if (i < 0 || i >= rows || j < 0 || j >= cols)
+        if (i >= rows || j >= cols)
             throw out_of_range("Matrix index out of bounds");
         return data[i][j];
     }
 
-    int getRows() const { return rows; }
+    size_t getRows() const { return rows; }
 
-    int getCols() const { return cols; }
+    size_t getCols() const { return cols; }
 
-    void resize(int new_rows, int new_cols, T default_value = T())
+    void resize(size_t new_rows, size_t new_cols, T default_value = T())
     {
         rows = new_rows;
         cols = new_cols;
@@ -57,4 +72,3 @@ public:
         }
     }
 };
-
