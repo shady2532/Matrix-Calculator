@@ -7,7 +7,7 @@ using namespace std;
 template <typename T>
 class Matrix
 {
-    vector<vector<T>> data;
+    vector<T> data;
     size_t rows, cols;
 
 public:
@@ -34,14 +34,14 @@ public:
     {
         if (i >= rows || j >= cols)
             throw out_of_range("Matrix index out of bounds");
-        return data[i][j];
+        return data[i * cols + j];
     }
 
     const T &operator()(size_t i, size_t j) const
     {
         if (i >= rows || j >= cols)
             throw out_of_range("Matrix index out of bounds");
-        return data[i][j];
+        return data[i * cols + j];
     }
 
     size_t getRows() const { return rows; }
@@ -52,23 +52,24 @@ public:
     {
         rows = new_rows;
         cols = new_cols;
-        data = vector<vector<T>>(new_rows, vector<T>(new_cols, default_value));
+        data = vector<T>(new_rows * new_cols, default_value);
     }
 
     void fill()
     {
-        for (auto &row : data)
-            for (auto &elem : row)
-                cin >> elem;
+        for (auto &elem : row)
+            cin >> elem;
     }
 
     void print() const
     {
-        for (const auto &row : data)
+        for (size_t i = 0; i < rows * cols; i++)
         {
-            for (const auto &elem : row)
-                cout << elem << " ";
-            cout << endl;
+            cout << data[i];
+            if ((i + 1) % cols == 0)
+                cout << endl;
+            else
+                cout << " ";
         }
     }
 };
