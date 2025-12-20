@@ -7,7 +7,6 @@ using namespace std;
 
 int main()
 {
-
 	// matrices are classes
 	Matrix<long long> matrixA; // matrix A
 	Matrix<double> matdouble1; // matrix A in a form of double
@@ -51,17 +50,17 @@ int main()
 
 	cout << "Please enter dimensions of Matrix A:" << endl;
 	cin >> r1 >> c1;
-	cout << "Please enter dimensions of Matrix B:" << endl;
-	cin >> r2 >> c2;
 	cout << "Please enter values of Matrix A:" << endl;
 	// entering values of matrix A
 	matrixA.resize(r1, c1);
-	matrixA.fill();
+	cin >> matrixA;
 
+	cout << "Please enter dimensions of Matrix B:" << endl;
+	cin >> r2 >> c2;
 	cout << "Please enter values of Matrix B:" << endl;
 	// entering values of matrix B
 	matrixB.resize(r2, c2);
-	matrixB.fill();
+	cin >> matrixB;
 
 	long long *product = new long long[c1];
 	double *product2 = new double[c1];
@@ -89,112 +88,55 @@ int main()
 		matdouble2.push_back(ff); // this loop is for pushing a 1D vector into a 2D vector
 	}
 
-
 	while (true)
 	{
 		cout << "Please choose operation type(1: A+B, 2: A-B, 3: AxB, 4: A*inverse(B), 5: |A|, 6: |B|, 7: quit):" << endl;
 		cin >> choice;
-		
+
 		// program break
 		if (choice == 7)
 		{
 			cout << "Thank You!" << endl; // nothing to explain here lol
 			break;
 		}
-		// sum and subtract
-		if (choice == 1 || choice == 2)
+		// sum
+		if (choice == 1)
 		{
-			if (r1 != r2 or c1 != c2) // it's a must that both matrices have same rows & columns for addition and subtraction
-			{
-				cout << "The operation you chose is invalid for the given matrices." << endl;
-			}
-			else
-			{
-				// sum
-				if (choice == 1)
-				{
-					// sum operation
-					for (long long i = 0; i < r1; i++)
-					{
-						vector<long long> ff;
-						for (long long j = 0; j < c1; j++)
-						{
-							sum = matrixA[i][j] + matrixB[i][j];
-							ff.push_back(sum); // this loop is for pushing elements in a 1D vector
-						}
-						sumMatrix.push_back(ff); // this loop is for pushing a 1D vector into a 2D vector
-					}
-					// cout result of sum
-					printMatrix(sumMatrix);
-				}
-				// subtract
-				if (choice == 2)
-				{
-					// subtract operation
-					for (long long i = 0; i < r1; i++)
-					{
-						vector<long long> ff;
-						for (long long j = 0; j < c1; j++)
-						{
-							sub = matrixA[i][j] - matrixB[i][j];
-							ff.push_back(sub); // this loop is for pushing elements in a 1D vector
-						}
-						subMatrix.push_back(ff); // this loop is for pushing a 1D vector into a 2D vector
-					}
-					// cout result of subtract
-					printMatrix(subMatrix);
-				}
-			}
+			// sum operation
+			sumMatrix = matrixA + matrixB;
+			// cout result of sum
+			cout << sumMatrix;
+		}
+		// subtract
+		if (choice == 2)
+		{
+			// subtract operation
+			subMatrix = matrixA - matrixB;
+			// cout result of subtract
+			cout << subMatrix;
 		}
 		// multiplication
 		if (choice == 3)
 		{
-			if (c1 != r2) // it's a must for the multiplication to be done that no.columns for A equals no.rows for B
-				cout << "The operation you chose is invalid for the given matrices." << endl;
-			else
-			{
-				// multiplication "the operation"
-				for (long long i = 0; i < r1; i++)
-				{
-					vector<long long> ff;
-					for (long long j = 0; j < c2; j++)
-					{
-						for (long long k = 0; k < c1; k++)
-						{												// after some experiements found that...
-							product[k] = matrixA[i][k] * matrixB[k][j]; // we multiply elements of a row in A with column in B
-							productSum += product[k];					// then adding them
-						}
-						ff.push_back(productSum);
-						productSum = 0; // resetting productSum to zero to calculate for the next iterate
-					}
-					multiplicationMatrix.push_back(ff);
-				}
-				// cout result of multiplication
-				printMatrix(multiplicationMatrix);
-			}
+			// multiplication operation
+			multiplicationMatrix = matrixA * matrixB;
+			// cout result of multiplication
+			cout << multiplicationMatrix;
 		}
 		// DETERMINANTS
 		if (choice == 5)
 		{
 			if (r1 != c1) // it's a must that a matrix must be a square matrix to get it's determinant which means the rows equals the columns
-			{
 				cout << "The operation you chose is invalid for the given matrices." << endl;
-			}
 			else
-			{
 				cout << determinant(matdouble1, r1) << endl; // getting the result of a determinant and a new line
-			}
 		}
 		if (choice == 6)
 		{
 			if (r2 != c2) // it's a must that a matrix must be a square matrix to get it's determinant which means the rows equals the columns
-			{
 				cout << "The operation you chose is invalid for the given matrices." << endl;
-			}
 			else
-			{
 				cout << determinant(matdouble2, r2) << endl; // getting the result of a determinant and a new line
-			}
 		}
 		// INVEEEEEERSE
 		if (choice == 4)
