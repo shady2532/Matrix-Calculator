@@ -1,7 +1,7 @@
 #include <iostream>
 #include <cmath>
 #include <vector>
-#include "operations.h"
+#include "command.h"
 #include "matrix.h"
 using namespace std;
 
