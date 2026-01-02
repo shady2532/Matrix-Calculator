@@ -2,22 +2,63 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "build",
+      "label": "cmake-configure",
       "type": "shell",
-      "command": "g++",
+      "command": "cmake",
       "args": [
-        "-g",
-        "Matrix-Calculator.cpp",  // Directly compile your main file
-        "-I.",                    // Include current directory
-        "-o",
-        "build/Matrix-Calculator.exe",
-        "-Wall",                  // Correct warning flags
-        "-Wextra"
+        "-S", "${workspaceFolder}",
+        "-B", "${workspaceFolder}/build",
+        "-DCMAKE_BUILD_TYPE=Debug",
+        "-G", "MinGW Makefiles",
+        "-DCMAKE_C_COMPILER=gcc",
+        "-DCMAKE_CXX_COMPILER=g++"
       ],
       "group": {
         "kind": "build",
         "isDefault": true
       },
+      "problemMatcher": [],
+      "options": {
+        "shell": {
+          "executable": "cmd.exe",
+          "args": ["/d", "/c"]
+        }
+      }
+    },
+    {
+      "label": "build-main",
+      "type": "shell",
+      "command": "cmake",
+      "args": [
+        "--build", "${workspaceFolder}/build",
+        "--target", "Matrix_Calculator"
+      ],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "dependsOn": ["cmake-configure"],
+      "problemMatcher": ["$gcc"],
+      "options": {
+        "shell": {
+          "executable": "cmd.exe",
+          "args": ["/d", "/c"]
+        }
+      }
+    },
+    {
+      "label": "build-tests",
+      "type": "shell",
+      "command": "cmake",
+      "args": [
+        "--build", "${workspaceFolder}/build",
+        "--target", "test_matrix"
+      ],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "dependsOn": ["cmake-configure"],
       "problemMatcher": ["$gcc"],
       "options": {
         "shell": {

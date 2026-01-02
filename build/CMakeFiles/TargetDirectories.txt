@@ -1,0 +1,4 @@
+E:/matrix calculator/Matrix-Calculator-new/build/CMakeFiles/Matrix_Calculator.dir
+E:/matrix calculator/Matrix-Calculator-new/build/CMakeFiles/test_matrix.dir
+E:/matrix calculator/Matrix-Calculator-new/build/CMakeFiles/edit_cache.dir
+E:/matrix calculator/Matrix-Calculator-new/build/CMakeFiles/rebuild_cache.dir
