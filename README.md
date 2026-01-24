@@ -13,4 +13,7 @@ This program does the following:
     5.Get the determinant of a Matrix.
 
 
-Further info is commented in the code file
+Future implementations:
+    - argc & argv for interaction from cmd
+    - Reading from files and writing to files
+    - transpose functionality
