@@ -14,6 +14,9 @@ This program does the following:
 
 
 Future implementations:
-    - argc & argv for interaction from cmd
-    - Reading from files and writing to files
-    - transpose functionality
+    
+    argc & argv for interaction from cmd
+    
+    Reading from files and writing to files
+    
+    transpose functionality
