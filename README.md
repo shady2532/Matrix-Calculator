@@ -15,8 +15,8 @@ This program does the following:
 
 Future implementations:
     
-    argc & argv for interaction from cmd
+    argc & argv for interaction from CLI
     
     Reading from files and writing to files
     
-    transpose functionality
+    functions like transpose, special matrix types, Linear Solver
