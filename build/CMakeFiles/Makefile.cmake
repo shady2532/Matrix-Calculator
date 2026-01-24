@@ -61,4 +61,6 @@ set(CMAKE_MAKEFILE_PRODUCTS
 set(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/Matrix_Calculator.dir/DependInfo.cmake"
   "CMakeFiles/test_matrix.dir/DependInfo.cmake"
+  "CMakeFiles/determinant_test.dir/DependInfo.cmake"
+  "CMakeFiles/inverse_test.dir/DependInfo.cmake"
   )

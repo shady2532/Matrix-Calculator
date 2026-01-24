@@ -1,0 +1,26 @@
+[
+{
+  "directory": "E:/matrix calculator/Matrix-Calculator-new/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe   -g -std=gnu++17 -o CMakeFiles\\Matrix_Calculator.dir\\src\\Matrix_Calculator.cpp.obj -c \"E:\\matrix calculator\\Matrix-Calculator-new\\src\\Matrix_Calculator.cpp\"",
+  "file": "E:/matrix calculator/Matrix-Calculator-new/src/Matrix_Calculator.cpp",
+  "output": "CMakeFiles/Matrix_Calculator.dir/src/Matrix_Calculator.cpp.obj"
+},
+{
+  "directory": "E:/matrix calculator/Matrix-Calculator-new/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe   -g -std=gnu++17 -o CMakeFiles\\test_matrix.dir\\tests\\test_matrix.cpp.obj -c \"E:\\matrix calculator\\Matrix-Calculator-new\\tests\\test_matrix.cpp\"",
+  "file": "E:/matrix calculator/Matrix-Calculator-new/tests/test_matrix.cpp",
+  "output": "CMakeFiles/test_matrix.dir/tests/test_matrix.cpp.obj"
+},
+{
+  "directory": "E:/matrix calculator/Matrix-Calculator-new/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe   -g -std=gnu++17 -o CMakeFiles\\determinant_test.dir\\tests\\determinant_test.cpp.obj -c \"E:\\matrix calculator\\Matrix-Calculator-new\\tests\\determinant_test.cpp\"",
+  "file": "E:/matrix calculator/Matrix-Calculator-new/tests/determinant_test.cpp",
+  "output": "CMakeFiles/determinant_test.dir/tests/determinant_test.cpp.obj"
+},
+{
+  "directory": "E:/matrix calculator/Matrix-Calculator-new/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe   -g -std=gnu++17 -o CMakeFiles\\inverse_test.dir\\tests\\inverse_test.cpp.obj -c \"E:\\matrix calculator\\Matrix-Calculator-new\\tests\\inverse_test.cpp\"",
+  "file": "E:/matrix calculator/Matrix-Calculator-new/tests/inverse_test.cpp",
+  "output": "CMakeFiles/inverse_test.dir/tests/inverse_test.cpp.obj"
+}
+]

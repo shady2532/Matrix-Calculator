@@ -1,0 +1,88 @@
+{
+	"configurations" : 
+	[
+		{
+			"abstractTargets" : [],
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"jsonFile" : "directory-.-Debug-f6f22219c74102c3da70.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.10"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "MatrixCalculator",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "Matrix_Calculator::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-Matrix_Calculator-Debug-274fe5248e5d0a241baa.json",
+					"name" : "Matrix_Calculator",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "determinant_test::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-determinant_test-Debug-46c98d7ed1ed86a0e332.json",
+					"name" : "determinant_test",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "inverse_test::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-inverse_test-Debug-3029e497f8bc49a2b413.json",
+					"name" : "inverse_test",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "test_matrix::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-test_matrix-Debug-94b15f238c57b2ef006a.json",
+					"name" : "test_matrix",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "E:/matrix calculator/Matrix-Calculator-new/build",
+		"source" : "E:/matrix calculator/Matrix-Calculator-new"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 9
+	}
+}

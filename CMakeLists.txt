@@ -10,3 +10,9 @@ add_executable(Matrix_Calculator src/Matrix_Calculator.cpp)
 
 # Add test executable (compile separately)
 add_executable(test_matrix tests/test_matrix.cpp)
+
+# Add test executable (compile separately)
+add_executable(determinant_test tests/determinant_test.cpp)
+
+# Add test executable (compile separately)
+add_executable(inverse_test tests/inverse_test.cpp)

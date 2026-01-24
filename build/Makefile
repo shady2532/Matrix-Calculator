@@ -141,6 +141,32 @@ test_matrix/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\test_matrix.dir\build.make CMakeFiles/test_matrix.dir/build
 .PHONY : test_matrix/fast
 
+#=============================================================================
+# Target rules for targets named determinant_test
+
+# Build rule for target.
+determinant_test: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 determinant_test
+.PHONY : determinant_test
+
+# fast build rule for target.
+determinant_test/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\determinant_test.dir\build.make CMakeFiles/determinant_test.dir/build
+.PHONY : determinant_test/fast
+
+#=============================================================================
+# Target rules for targets named inverse_test
+
+# Build rule for target.
+inverse_test: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 inverse_test
+.PHONY : inverse_test
+
+# fast build rule for target.
+inverse_test/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\inverse_test.dir\build.make CMakeFiles/inverse_test.dir/build
+.PHONY : inverse_test/fast
+
 src/Matrix_Calculator.obj: src/Matrix_Calculator.cpp.obj
 .PHONY : src/Matrix_Calculator.obj
 
@@ -164,6 +190,54 @@ src/Matrix_Calculator.s: src/Matrix_Calculator.cpp.s
 src/Matrix_Calculator.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Matrix_Calculator.dir\build.make CMakeFiles/Matrix_Calculator.dir/src/Matrix_Calculator.cpp.s
 .PHONY : src/Matrix_Calculator.cpp.s
+
+tests/determinant_test.obj: tests/determinant_test.cpp.obj
+.PHONY : tests/determinant_test.obj
+
+# target to build an object file
+tests/determinant_test.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\determinant_test.dir\build.make CMakeFiles/determinant_test.dir/tests/determinant_test.cpp.obj
+.PHONY : tests/determinant_test.cpp.obj
+
+tests/determinant_test.i: tests/determinant_test.cpp.i
+.PHONY : tests/determinant_test.i
+
+# target to preprocess a source file
+tests/determinant_test.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\determinant_test.dir\build.make CMakeFiles/determinant_test.dir/tests/determinant_test.cpp.i
+.PHONY : tests/determinant_test.cpp.i
+
+tests/determinant_test.s: tests/determinant_test.cpp.s
+.PHONY : tests/determinant_test.s
+
+# target to generate assembly for a file
+tests/determinant_test.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\determinant_test.dir\build.make CMakeFiles/determinant_test.dir/tests/determinant_test.cpp.s
+.PHONY : tests/determinant_test.cpp.s
+
+tests/inverse_test.obj: tests/inverse_test.cpp.obj
+.PHONY : tests/inverse_test.obj
+
+# target to build an object file
+tests/inverse_test.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\inverse_test.dir\build.make CMakeFiles/inverse_test.dir/tests/inverse_test.cpp.obj
+.PHONY : tests/inverse_test.cpp.obj
+
+tests/inverse_test.i: tests/inverse_test.cpp.i
+.PHONY : tests/inverse_test.i
+
+# target to preprocess a source file
+tests/inverse_test.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\inverse_test.dir\build.make CMakeFiles/inverse_test.dir/tests/inverse_test.cpp.i
+.PHONY : tests/inverse_test.cpp.i
+
+tests/inverse_test.s: tests/inverse_test.cpp.s
+.PHONY : tests/inverse_test.s
+
+# target to generate assembly for a file
+tests/inverse_test.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\inverse_test.dir\build.make CMakeFiles/inverse_test.dir/tests/inverse_test.cpp.s
+.PHONY : tests/inverse_test.cpp.s
 
 tests/test_matrix.obj: tests/test_matrix.cpp.obj
 .PHONY : tests/test_matrix.obj
@@ -198,10 +272,18 @@ help:
 	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... Matrix_Calculator
+	@echo ... determinant_test
+	@echo ... inverse_test
 	@echo ... test_matrix
 	@echo ... src/Matrix_Calculator.obj
 	@echo ... src/Matrix_Calculator.i
 	@echo ... src/Matrix_Calculator.s
+	@echo ... tests/determinant_test.obj
+	@echo ... tests/determinant_test.i
+	@echo ... tests/determinant_test.s
+	@echo ... tests/inverse_test.obj
+	@echo ... tests/inverse_test.i
+	@echo ... tests/inverse_test.s
 	@echo ... tests/test_matrix.obj
 	@echo ... tests/test_matrix.i
 	@echo ... tests/test_matrix.s

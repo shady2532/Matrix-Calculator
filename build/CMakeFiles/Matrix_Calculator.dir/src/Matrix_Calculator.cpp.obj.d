@@ -158,5 +158,41 @@ CMakeFiles/Matrix_Calculator.dir/src/Matrix_Calculator.cpp.obj: \
  C:/msys64/ucrt64/include/c++/14.2.0/bits/stl_vector.h \
  C:/msys64/ucrt64/include/c++/14.2.0/bits/stl_bvector.h \
  C:/msys64/ucrt64/include/c++/14.2.0/bits/vector.tcc \
- E:\matrix\ calculator\Matrix-Calculator-new\src\command.h \
- E:\matrix\ calculator\Matrix-Calculator-new\src\matrix.h
+ E:\matrix\ calculator\Matrix-Calculator-new\src\matrix.h \
+ C:/msys64/ucrt64/include/c++/14.2.0/optional \
+ C:/msys64/ucrt64/include/c++/14.2.0/bits/enable_special_members.h \
+ C:/msys64/ucrt64/include/c++/14.2.0/memory \
+ C:/msys64/ucrt64/include/c++/14.2.0/bits/stl_tempbuf.h \
+ C:/msys64/ucrt64/include/c++/14.2.0/bits/stl_raw_storage_iter.h \
+ C:/msys64/ucrt64/include/c++/14.2.0/bits/align.h \
+ C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/stdint.h \
+ C:/msys64/ucrt64/include/stdint.h \
+ C:/msys64/ucrt64/include/c++/14.2.0/bits/unique_ptr.h \
+ C:/msys64/ucrt64/include/c++/14.2.0/bits/shared_ptr.h \
+ C:/msys64/ucrt64/include/c++/14.2.0/bits/shared_ptr_base.h \
+ C:/msys64/ucrt64/include/c++/14.2.0/bits/allocated_ptr.h \
+ C:/msys64/ucrt64/include/c++/14.2.0/ext/aligned_buffer.h \
+ C:/msys64/ucrt64/include/c++/14.2.0/ext/concurrence.h \
+ C:/msys64/ucrt64/include/c++/14.2.0/bits/shared_ptr_atomic.h \
+ C:/msys64/ucrt64/include/c++/14.2.0/bits/atomic_base.h \
+ C:/msys64/ucrt64/include/c++/14.2.0/bits/atomic_lockfree_defines.h \
+ C:/msys64/ucrt64/include/c++/14.2.0/backward/auto_ptr.h \
+ C:/msys64/ucrt64/include/c++/14.2.0/pstl/glue_memory_defs.h \
+ C:/msys64/ucrt64/include/c++/14.2.0/pstl/execution_defs.h \
+ C:/msys64/ucrt64/include/c++/14.2.0/iomanip \
+ C:/msys64/ucrt64/include/c++/14.2.0/locale \
+ C:/msys64/ucrt64/include/c++/14.2.0/bits/locale_facets_nonio.h \
+ C:/msys64/ucrt64/include/c++/14.2.0/ctime \
+ C:/msys64/ucrt64/include/c++/14.2.0/x86_64-w64-mingw32/bits/time_members.h \
+ C:/msys64/ucrt64/include/c++/14.2.0/x86_64-w64-mingw32/bits/messages_members.h \
+ C:/msys64/ucrt64/include/c++/14.2.0/bits/codecvt.h \
+ C:/msys64/ucrt64/include/c++/14.2.0/bits/locale_facets_nonio.tcc \
+ C:/msys64/ucrt64/include/c++/14.2.0/bits/locale_conv.h \
+ C:/msys64/ucrt64/include/c++/14.2.0/bits/quoted_string.h \
+ C:/msys64/ucrt64/include/c++/14.2.0/sstream \
+ C:/msys64/ucrt64/include/c++/14.2.0/bits/sstream.tcc \
+ E:\matrix\ calculator\Matrix-Calculator-new\src\Determinant.cpp \
+ E:\matrix\ calculator\Matrix-Calculator-new\src\MatrixCore.cpp \
+ E:\matrix\ calculator\Matrix-Calculator-new\src\MatrixIO.cpp \
+ E:\matrix\ calculator\Matrix-Calculator-new\src\MatrixOperators.cpp \
+ E:\matrix\ calculator\Matrix-Calculator-new\src\Inverse.cpp
